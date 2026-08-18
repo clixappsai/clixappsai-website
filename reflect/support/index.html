@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Support — Reflect: Trading Journal | ClixAppsAI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:     #050816;
+      --bg2:    #080d1e;
+      --bg3:    #0b1228;
+      --border: rgba(255,255,255,0.07);
+      --cyan:   #61dafb;
+      --pink:   #d46bff;
+      --text:   #e8eaf0;
+      --muted:  #8892a4;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Inter", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: rgba(5,8,22,0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    nav {
+      display: flex; align-items: center;
+      justify-content: space-between; padding: 6px 0; gap: 16px;
+    }
+    .logo-area a { text-decoration: none; display: flex; align-items: center; gap: 10px; }
+    .logo-text {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.25rem; font-weight: 700;
+      background: linear-gradient(90deg, var(--cyan), var(--pink));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      padding: 6px 14px; border-radius: 6px; text-decoration: none;
+      color: var(--muted); font-size: 0.875rem; font-weight: 500;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links a:hover { color: var(--cyan); background: rgba(97,218,251,0.07); }
+    .nav-links .nav-cta {
+      background: var(--cyan); color: #050816;
+      font-weight: 700; margin-left: 8px;
+    }
+    .nav-links .nav-cta:hover { background: #8ae8ff; }
+
+    .page-wrap { max-width: 760px; margin: 0 auto; padding: 64px 24px 100px; }
+
+    .page-badge {
+      display: inline-block;
+      background: rgba(97,218,251,0.12);
+      color: var(--cyan);
+      border: 1px solid rgba(97,218,251,0.25);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700; line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .subtitle { color: var(--muted); font-size: 1rem; margin-bottom: 48px; }
+
+    .contact-card {
+      background: linear-gradient(135deg, rgba(97,218,251,0.1), rgba(212,107,255,0.07));
+      border: 1px solid rgba(97,218,251,0.25);
+      border-radius: 14px;
+      padding: 28px 32px;
+      margin-bottom: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .contact-card p { font-size: 0.95rem; color: var(--muted); }
+    .contact-card strong { color: var(--text); display: block; font-size: 1rem; margin-bottom: 4px; }
+    .contact-btn {
+      background: var(--cyan); color: #050816;
+      font-weight: 700; font-size: 0.9rem;
+      padding: 10px 22px; border-radius: 8px;
+      text-decoration: none; white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .contact-btn:hover { background: #8ae8ff; }
+
+    h2 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.2rem; font-weight: 700;
+      margin-bottom: 16px; margin-top: 40px;
+      color: var(--text);
+    }
+    h2:first-of-type { margin-top: 0; }
+
+    .faq { margin-bottom: 12px; }
+    .faq-q {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px 10px 0 0;
+      padding: 16px 20px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: default;
+    }
+    .faq-a {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 10px 10px;
+      padding: 16px 20px;
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .faq-a code {
+      background: rgba(97,218,251,0.1);
+      color: var(--cyan);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 0.88em;
+    }
+
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 40px 0 28px;
+    }
+    .footer-inner {
+      display: flex; flex-wrap: wrap;
+      justify-content: space-between; align-items: center;
+      gap: 16px; margin-bottom: 20px;
+    }
+    .footer-brand {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700; font-size: 1rem;
+      background: linear-gradient(90deg, var(--cyan), var(--pink));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+    .footer-links a { color: var(--muted); font-size: 0.85rem; text-decoration: none; }
+    .footer-links a:hover { color: var(--cyan); }
+    .footer-copy { color: var(--muted); font-size: 0.8rem; text-align: center; padding-top: 16px; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo-area">
+        <a href="https://clixappsai.com">
+          <span class="logo-text">ClixAppsAI</span>
+        </a>
+      </div>
+      <div class="nav-links">
+        <a href="https://clixappsai.com">Home</a>
+        <a href="/reflect/privacy">Privacy</a>
+        <a href="mailto:appshelp@clixappsai.com" class="nav-cta">Contact</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="page-wrap">
+  <div class="page-badge">Reflect: Trading Journal</div>
+  <h1>Support</h1>
+  <p class="subtitle">We're here to help. Most questions are answered below — if not, email us directly.</p>
+
+  <div class="contact-card">
+    <div>
+      <strong>Email support</strong>
+      <p>Usually responded to within 1 business day.</p>
+    </div>
+    <a href="mailto:appshelp@clixappsai.com" class="contact-btn">appshelp@clixappsai.com</a>
+  </div>
+
+  <h2>Getting started</h2>
+
+  <div class="faq">
+    <div class="faq-q">How do I set up my profile?</div>
+    <div class="faq-a">When you first open Reflect you'll be taken through a welcome screen and profile setup. Choose your trader type, set your daily loss limit and trade limit, name your systems, and optionally add your goal and instruments. These become the rules every trade is checked against.</div>
+  </div>
+
+  <div class="faq">
+    <div class="faq-q">How do I log a trade?</div>
+    <div class="faq-a">Go to the Trades tab. Tap <strong>+</strong> to log a trade on today's date, or long-press any day on the calendar to log directly onto that day. For partial exits (scaling out), log the trade open and then tap "Add exit" from the trade detail screen until the full quantity is filled.</div>
+  </div>
+
+  <div class="faq">
+    <div class="faq-q">What is the morning check-in?</div>
+    <div class="faq-a">Each morning the Well-being tab shows a quick check-in: tap your mood, stress and energy (1–5), tick your habits, and confirm sleep. This takes about 60 seconds. Your readiness score (0–100) is computed from these inputs plus health data if connected. The score powers the pre-trade nudge and the wellness analytics.</div>
+  </div>
+
+  <h2>Apple Health & wearables</h2>
+
+  <div class="faq">
+    <div class="faq-q">My Apple Health data isn't appearing in the check-in.</div>
+    <div class="faq-a">
+      Two things to check:<br><br>
+      1. <strong>Your wearable's app</strong> (Whoop, Garmin, Oura etc.) must have Apple Health sync enabled. Open the wearable's app → Settings or Integrations → Apple Health → turn on sleep and heart rate.<br><br>
+      2. <strong>Reflect's permissions:</strong> iPhone Settings → Privacy &amp; Security → Health → Reflect → make sure Sleep, Heart Rate Variability and Resting Heart Rate are all on.<br><br>
+      Data only appears after a full night's sleep with the wearable on — the first morning after enabling sync is the first populated check-in.
+    </div>
+  </div>
+
+  <div class="faq">
+    <div class="faq-q">I don't have a wearable. Can I still use the check-in?</div>
+    <div class="faq-a">Yes — the sleep field accepts manual entry and the readiness score computes from your subjective inputs (mood, stress, energy) alone. The score is slightly less precise without biometrics but works well from day one.</div>
+  </div>
+
+  <h2>Data & backups</h2>
+
+  <div class="faq">
+    <div class="faq-q">How do I move my data to a new phone?</div>
+    <div class="faq-a">Settings → <strong>Backup data to iCloud Drive</strong> → save the file to iCloud Drive. On your new phone, install Reflect → Settings → <strong>Restore data from backup</strong> → select the file. Everything — trades, check-ins, profile — is restored.</div>
+  </div>
+
+  <div class="faq">
+    <div class="faq-q">I deleted a trade by mistake. Can I recover it?</div>
+    <div class="faq-a">Trades cannot be recovered once deleted — the journal doesn't rewrite history by design. If you made a recent backup, restoring it will recover the trade (but will also replace any trades logged since the backup). Otherwise, re-enter the trade manually.</div>
+  </div>
+
+  <div class="faq">
+    <div class="faq-q">Where is my data stored?</div>
+    <div class="faq-a">On your device only — in Apple's SwiftData database. Nothing is sent to any server. Reflect makes zero network calls during normal use. See our <a href="/reflect/privacy">Privacy Policy</a> for full details.</div>
+  </div>
+
+  <h2>Analytics & reports</h2>
+
+  <div class="faq">
+    <div class="faq-q">Why are my wellness analytics locked?</div>
+    <div class="faq-a">Wellness correlations require a minimum sample before they're shown — small samples produce misleading results. Each bucket (e.g. "Under 6h sleep") needs at least 10 trades before it unlocks. Keep checking in daily and the analytics fill in over 2–3 weeks of trading.</div>
+  </div>
+
+  <div class="faq">
+    <div class="faq-q">How do I generate a report?</div>
+    <div class="faq-a">Analytics tab → scroll to the bottom → select the period (this month, last 3 months, or all time) → tap <strong>Generate report</strong>. The format (HTML or PDF) is set in Settings → Reports. Tap Share to send via email, AirDrop or save to Files.</div>
+  </div>
+
+  <h2>Alerts</h2>
+
+  <div class="faq">
+    <div class="faq-q">My alerts aren't firing.</div>
+    <div class="faq-a">Check: Settings → Alerts → master toggle is on, and the specific alert is enabled. Then verify iPhone Settings → Notifications → Reflect is allowed. Use the <strong>Send test</strong> button on any alert row to confirm delivery — you need to leave the app or lock the screen first, as iOS suppresses notifications while the app is open.</div>
+  </div>
+
+  <div class="faq">
+    <div class="faq-q">The "Are you overtrading?" alert — when does it fire?</div>
+    <div class="faq-a">It fires in two ways: at the scheduled time you set (useful for a mid-session check), and immediately when you log a trade that takes you past your declared trade limit. Both triggers can be used together.</div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">ClixAppsAI.com</div>
+      <div class="footer-links">
+        <a href="https://clixappsai.com">Home</a>
+        <a href="/reflect/support">Support</a>
+        <a href="/reflect/privacy">Privacy</a>
+        <a href="mailto:appshelp@clixappsai.com">Contact</a>
+      </div>
+    </div>
+    <div class="footer-copy">&copy; 2026 ClixAppsAI.com &mdash; All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
