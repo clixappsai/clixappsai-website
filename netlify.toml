@@ -1,0 +1,19 @@
+# clixappsai.com is plain static HTML served straight from the repo root.
+# There is no build step: no bundler, no generator, no dependencies.
+#
+# This file exists so the publish settings live in git rather than only in the
+# Netlify dashboard. If the project is ever relinked to the repo, the dashboard
+# fields are re-entered by hand and a wrong value fails silently - the build
+# succeeds and simply publishes nothing useful.
+#
+# NOTE: the production branch is NOT settable here; it is dashboard-only.
+# This repo is on `master`, but Netlify pre-fills `main`. After any relink,
+# check that Production branch says master or no push will ever deploy.
+
+[build]
+  # Serve the repo root as-is.
+  publish = "."
+
+  # No build command. Explicitly empty rather than absent, so a stale dashboard
+  # value cannot reintroduce one.
+  command = ""
